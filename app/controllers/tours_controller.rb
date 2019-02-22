@@ -7,7 +7,9 @@ class ToursController < ApplicationController
     @tours = Tour.all
 
   end
+  def updateyours
 
+  end
   # GET /tours/1
   # GET /tours/1.json
   def show
