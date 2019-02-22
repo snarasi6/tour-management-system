@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tour Management System</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <h1>Tour Management System</h1>
+  <% if current_user %>
+    Signed in as <%= current_user.name %> (<%= current_user.user_type %>)|<%= link_to "Logout", '/logout' %>
+    <% if current_user.user_type == 'Agent' %>
+      <!--#List a Tour-->
+      <h4>
+        <%= link_to "List a Tour",  new_tour_path%> &nbsp;
+        <!--View all tours-->
+        <%= link_to "View all Tours", tours_path%>
+
+      </h4>
+    <% end %>
+  <% else %>
+    <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+  <% end %>
+
+  <%= yield %>
+  </body>
+</html>
